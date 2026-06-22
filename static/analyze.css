@@ -1,0 +1,102 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Segoe UI, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #2563eb, #06b6d4);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 90%;
+    max-width: 800px;
+}
+
+.analyze-card {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .2);
+}
+
+.analyze-card h1 {
+    margin-bottom: 15px;
+}
+
+.analyze-card p {
+    color: #666;
+    margin-bottom: 25px;
+}
+
+textarea {
+    width: 100%;
+    height: 220px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    resize: none;
+    font-size: 16px;
+}
+
+button {
+    margin-top: 20px;
+    padding: 14px 30px;
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background: #1d4ed8;
+}
+
+.back-btn {
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #2563eb;
+    font-weight: bold;
+}
+
+.buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    text-decoration: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    color: white;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.home-btn {
+    background: #2563eb;
+}
+
+.home-btn:hover {
+    background: #1d4ed8;
+}
+
+.dashboard-btn {
+    background: #16a34a;
+}
+
+.dashboard-btn:hover {
+    background: #15803d;
+}

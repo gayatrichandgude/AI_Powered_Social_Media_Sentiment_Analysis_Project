@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Prediction History</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='history.css') }}">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Header -->
+
+        <div class="header">
+
+            <h1>📜 Sentiment Prediction History</h1>
+
+            <div class="buttons">
+
+                <a href="/" class="btn">
+                    🏠 Home
+                </a>
+
+                <a href="/dashboard" class="btn">
+                    📊 Dashboard
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- Summary -->
+
+        <div class="summary-card">
+
+            <h2>Total Records</h2>
+
+            <h1>{{ history|length }}</h1>
+
+        </div>
+
+        <!-- Search -->
+
+        <div class="search-box">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search prediction history...">
+
+        </div>
+
+        <!-- Table -->
+
+        <div class="table-container">
+
+            <table id="historyTable">
+
+                <thead>
+
+                    <tr>
+
+                        <th>ID</th>
+                        <th>Text</th>
+                        <th>Sentiment</th>
+                        <th>Date</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    {% for row in history %}
+
+                    <tr>
+
+                        <td>{{ row[0] }}</td>
+
+                        <td>
+                            {{ row[1][:120] }}...
+                        </td>
+
+                        <td>
+
+                            {% if row[2] == "positive" %}
+
+                            <span class="positive">
+                                😊 Positive
+                            </span>
+
+                            {% elif row[2] == "negative" %}
+
+                            <span class="negative">
+                                😞 Negative
+                            </span>
+
+                            {% else %}
+
+                            <span class="neutral">
+                                😐 Neutral
+                            </span>
+
+                            {% endif %}
+
+                        </td>
+
+                        <td>{{ row[3] }}</td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        const searchInput =
+            document.getElementById("searchInput");
+
+        searchInput.addEventListener(
+            "keyup",
+            function () {
+
+                let filter =
+                    this.value.toLowerCase();
+
+                let rows =
+                    document.querySelectorAll(
+                        "#historyTable tbody tr"
+                    );
+
+                rows.forEach(row => {
+
+                    let text =
+                        row.innerText.toLowerCase();
+
+                    row.style.display =
+                        text.includes(filter)
+                        ? ""
+                        : "none";
+
+                });
+
+            }
+        );
+
+    </script>
+
+</body>
+
+</html>

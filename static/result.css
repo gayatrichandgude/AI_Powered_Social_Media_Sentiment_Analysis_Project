@@ -1,0 +1,106 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Segoe UI, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #2563eb, #06b6d4);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 90%;
+    max-width: 800px;
+}
+
+.result-card {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.result-card h1 {
+    margin-bottom: 25px;
+}
+
+.text-box {
+    background: #f4f4f4;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+}
+
+.text-box p {
+    margin-top: 10px;
+    color: #444;
+}
+
+.sentiment {
+    padding: 18px;
+    border-radius: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+.positive {
+    background: #d4edda;
+    color: #155724;
+}
+
+.negative {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.neutral {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.confidence {
+    margin-top: 20px;
+}
+
+.progress {
+    width: 100%;
+    background: #ddd;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.progress-bar {
+    background: #2563eb;
+    color: white;
+    padding: 12px;
+    text-align: center;
+}
+
+.buttons {
+    margin-top: 30px;
+}
+
+.btn {
+    text-decoration: none;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 8px;
+    margin: 10px;
+    display: inline-block;
+}
+
+.home-btn {
+    background: #2563eb;
+}
+
+.dashboard-btn {
+    background: #16a34a;
+}

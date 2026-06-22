@@ -1,0 +1,269 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sentiment Analytics Dashboard</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='dashboard.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Header -->
+
+    <div class="header">
+
+        <h1>📊 Sentiment Analytics Dashboard</h1>
+
+        <div class="header-buttons">
+
+            <a href="/" class="home-btn">
+                🏠 Home
+            </a>
+
+            <a href="/analyze" class="analyze-btn">
+                🔍 Analyze
+            </a>
+
+            <a href="/history" class="history-btn">
+                📜 History
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- Statistics Cards -->
+
+    <div class="cards">
+
+    <div class="card total">
+        <div class="icon">📊</div>
+        <h3>Total Predictions</h3>
+        <h2>{{ total }}</h2>
+    </div>
+
+    <div class="card positive">
+        <div class="icon">😊</div>
+        <h3>Positive</h3>
+        <h2>{{ positive }}</h2>
+    </div>
+
+    <div class="card negative">
+        <div class="icon">😞</div>
+        <h3>Negative</h3>
+        <h2>{{ negative }}</h2>
+    </div>
+
+    <div class="card neutral">
+        <div class="icon">😐</div>
+        <h3>Neutral</h3>
+        <h2>{{ neutral }}</h2>
+    </div>
+
+</div>
+
+    <!-- Model Cards -->
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>Model</h3>
+            <h2>Logistic Regression</h2>
+        </div>
+
+        <div class="card">
+            <h3>Vectorizer</h3>
+            <h2>TF-IDF</h2>
+        </div>
+
+        <div class="card">
+            <h3>Domain</h3>
+            <h2>Social Media NLP</h2>
+        </div>
+
+        <div class="card">
+            <h3>Classes</h3>
+            <h2>3</h2>
+        </div>
+
+    </div>
+
+    <!-- Charts -->
+
+    <div class="chart-container">
+
+        <div class="chart-box">
+
+            <h2>Sentiment Distribution</h2>
+
+            <canvas id="pieChart" width="350" height="350"></canvas>
+
+        </div>
+
+        <div class="chart-box">
+
+            <h2>Sentiment Comparison</h2>
+
+            <canvas id="barChart" width="350" height="350"></canvas>
+
+        </div>
+
+    </div>
+
+    <!-- Model Information -->
+
+    <div class="model-info">
+
+        <h2>🤖 Model Information</h2>
+
+        <p><b>Model:</b> Logistic Regression</p>
+
+        <p><b>Feature Extraction:</b> TF-IDF</p>
+
+        <p><b>Library:</b> Scikit-Learn</p>
+
+        <p><b>Domain:</b> Social Media Sentiment Analysis</p>
+
+        <p><b>Classes:</b> Positive, Negative, Neutral</p>
+
+    </div>
+
+    <!-- Recent Predictions -->
+
+    <div class="history">
+
+        <h2>📝 Recent Predictions</h2>
+
+        <table>
+
+            <tr>
+                <th>ID</th>
+                <th>Text</th>
+                <th>Sentiment</th>
+                <th>Date</th>
+            </tr>
+
+            {% for row in recent_predictions %}
+
+            <tr>
+
+                <td>{{ row[0] }}</td>
+
+                <td>{{ row[1][:80] }}...</td>
+
+                <td>{{ row[2] }}</td>
+
+                <td>{{ row[3] }}</td>
+
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+    </div>
+
+    <!-- Quick Actions -->
+
+    <div class="quick-actions">
+
+        <h2>⚡ Quick Actions</h2>
+
+        <a href="/analyze">
+            Analyze New Text
+        </a>
+
+        <a href="/history">
+            View Full History
+        </a>
+
+    </div>
+
+    <!-- Footer -->
+
+    <footer>
+
+        <h3>AI Sentiment Analysis Dashboard</h3>
+
+        <p>
+            Powered by NLP, TF-IDF and Machine Learning
+        </p>
+
+        <p>
+            © 2026 All Rights Reserved
+        </p>
+
+    </footer>
+
+</div>
+
+<script>
+
+const positive = {{ positive }};
+const negative = {{ negative }};
+const neutral = {{ neutral }};
+
+// Pie Chart
+
+new Chart(
+    document.getElementById('pieChart'),
+    {
+        type: 'pie',
+        data: {
+            labels: [
+                'Positive',
+                'Negative',
+                'Neutral'
+            ],
+            datasets: [{
+                data: [
+                    positive,
+                    negative,
+                    neutral
+                ]
+            }]
+        }
+    }
+);
+
+// Bar Chart
+
+new Chart(
+    document.getElementById('barChart'),
+    {
+        type: 'bar',
+        data: {
+            labels: [
+                'Positive',
+                'Negative',
+                'Neutral'
+            ],
+            datasets: [{
+                label: 'Sentiment Count',
+                data: [
+                    positive,
+                    negative,
+                    neutral
+                ]
+            }]
+        }
+    }
+);
+
+</script>
+
+</body>
+</html>
+

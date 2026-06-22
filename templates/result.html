@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Prediction Result</title>
+
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='result.css') }}">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="result-card">
+
+            <h1>📊 Sentiment Analysis Result</h1>
+
+            <div class="text-box">
+
+                <h3>Analyzed Text</h3>
+
+                <p>
+                    {{ text }}
+                </p>
+
+            </div>
+
+            {% if prediction == "positive" %}
+
+            <div class="sentiment positive">
+
+                😊 Positive Sentiment
+
+            </div>
+
+            {% elif prediction == "negative" %}
+
+            <div class="sentiment negative">
+
+                😞 Negative Sentiment
+
+            </div>
+
+            {% else %}
+
+            <div class="sentiment neutral">
+
+                😐 Neutral Sentiment
+
+            </div>
+
+            {% endif %}
+
+            <div class="confidence">
+
+                <h3>Prediction Confidence</h3>
+
+                <div class="progress">
+
+                    <div class="progress-bar"
+                        style="width: {{ confidence }}%">
+                        {{ confidence }}%
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="buttons">
+
+                <a href="/" class="btn home-btn">
+                    Analyze Another
+                </a>
+
+                <a href="/dashboard" class="btn dashboard-btn">
+                    View Dashboard
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
