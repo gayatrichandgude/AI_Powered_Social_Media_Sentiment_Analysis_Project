@@ -94,30 +94,29 @@ Built using Flask, Scikit-Learn, NLTK, TF-IDF Vectorization, Logistic Regression
 
 ---
 
-# 📂 Project Structure
+## 📂 Project Structure
 
-
-AI_Powered_Social_Media_Sentiment_Analysis_Project/
-
+```text
+AI_Powered_Social_Media_Sentiment_Analysis_Project
 │
-├── dataset/
+├── dataset
 │   └── twitter_sentiment.csv
 │
-├── database/
+├── database
 │   └── sentiment.db
 │
-├── model/
+├── model
 │   ├── sentiment_model.pkl
 │   └── tfidf.pkl
 │
-├── static/
+├── static
 │   ├── style.css
 │   ├── analyze.css
 │   ├── dashboard.css
 │   ├── history.css
 │   └── result.css
 │
-├── templates/
+├── templates
 │   ├── index.html
 │   ├── analyze.html
 │   ├── dashboard.html
@@ -126,16 +125,15 @@ AI_Powered_Social_Media_Sentiment_Analysis_Project/
 │   
 │   
 │
-├── utils/
+├── utils
 │   └── preprocessing.py
 │
 ├── app.py
-├── train_model.py
 ├── create_db.py
+├── train_model.py
 ├── requirements.txt
 └── README.md
-
----
+```
 
 # 🗄️ Database Schema
 
