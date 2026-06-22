@@ -314,7 +314,7 @@ This project demonstrates:
 
 **Gayatri Chandgude**
 
-GitHub: https://github.com/gayatri132004
+GitHub: https://github.com/gayatrichandgude
 
 ---
 
